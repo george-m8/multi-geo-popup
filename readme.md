@@ -1,12 +1,5 @@
 # Multi Geo Popup
 
-**Contributors:** Your Name  
-**Requires at least:** 5.0  
-**Tested up to:** 6.x  
-**Stable tag:** 1.0  
-**License:** GPLv2 or later  
-**License URI:** [http://www.gnu.org/licenses/gpl-2.0.html](http://www.gnu.org/licenses/gpl-2.0.html)  
-
 A WordPress plugin that detects the user’s country (via Cloudflare or IP-based geolocation as fallback) and displays a custom popup if the domain doesn’t match the user’s location. Useful for redirect suggestions or location-based content.
 
 ---
@@ -39,6 +32,9 @@ Multi Geo Popup uses a config file (`domain-config.php`) to define which domain 
 ### 1. Configure Domains
 - In `inc/domain-config.php`, create an entry for each domain you manage, specifying the `expected_country`, `popup_id`, and any relevant `alt_domains`.
 
+### 2. Configure Countries
+- In `inc/country-config`, create any entries for countries you would like to include. A small list is provided here already. Add any country codes needed, their country names and any images for country flags.
+
 ### 2. Add Popups
 - Install and activate Popup Maker (optional) if you want to display popups based on location mismatches.
 - Use the `popup_id` from your domain config in Popup Maker’s settings.
@@ -64,8 +60,5 @@ Multi Geo Popup uses a config file (`domain-config.php`) to define which domain 
   Ensure caching plugin (if any) won’t cause stale geolocation data. The plugin uses Ajax to reduce this risk, but double-check cache settings.
 
 - **Build Out Shortcodes:**  
-  Need to style nicely.
-
-- **Trying to use php file for country names and images**
-  Commented out code in js file, not working with new code. Likely an enqueuing issue not making the lookup visible.
-  Fixed above, but image URLS need sorting.
+  Check Styling
+  Add shortcode for country selector using config for current site and list of other sites.
