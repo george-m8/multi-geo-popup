@@ -60,5 +60,5 @@ Multi Geo Popup uses a config file (`domain-config.php`) to define which domain 
   Ensure caching plugin (if any) won’t cause stale geolocation data. The plugin uses Ajax to reduce this risk, but double-check cache settings.
 
 - **Build Out Shortcodes:**  
-  Check Styling
-  Add shortcode for country selector using config for current site and list of other sites.
+  Check Styling - still needs work
+  added country selector drop down, needs work and needs working out how to add nicely to nav.

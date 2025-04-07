@@ -65,6 +65,14 @@ function mgp_enqueue_scripts() {
         false
     );
 
+    wp_enqueue_script(
+        'mgp-country-selector',
+        plugin_dir_url(__FILE__) . 'js/mgp-country-selector.js',
+        array('jquery'),
+        '1.0',
+        true
+    );
+
     // Localize data for JS
     wp_localize_script('multi-geo-popup', 'mgpAjax', [
         'ajaxUrl'       => admin_url('admin-ajax.php'),
@@ -134,6 +142,16 @@ function mgp_get_cf_country() {
     }
     return 'XX';
 }
+/**
+ * Get IP and Cloudflare country for logged in users
+ * (for debugging purposes)
+ */
+add_action('init', function () {
+    if (current_user_can('manage_options')) {
+        error_log('User IP: ' . mgp_get_user_ip());
+        error_log('CF Country: ' . mgp_get_cf_country());
+    }
+});
 
 // SHORTCODES
 add_shortcode('mgp_popup_content', function($atts) {
@@ -148,6 +166,41 @@ add_shortcode('mgp_popup_content', function($atts) {
                 <a class="mgp-button mgp-go-button" href="#"><img src="/img/128px/generic_flag.png" class="mgp-user-country-img">Go to <span class="mgp-user-country"> local site</span></a>
             </div>
         </div>
+    </div>
+    <?php
+    return ob_get_clean();
+});
+
+add_shortcode('mgp_country_selector', function($atts) {
+    global $mgp_domain_config, $mgp_country_config;
+
+    $current_host = $_SERVER['HTTP_HOST'] ?? 'localhost';
+    $current_config = $mgp_domain_config[$current_host] ?? null;
+    $expected_country = $current_config['expected_country'] ?? 'XX';
+
+    ob_start();
+    ?>
+    <div class="mgp-country-selector">
+        <button class="mgp-current-country-toggle">
+            <img src="<?php echo esc_url($mgp_country_config[$expected_country]['image']); ?>" class="mgp-flag-img" />
+            <span><?php echo esc_html($mgp_country_config[$expected_country]['country_name']); ?></span>
+            <span class="mgp-chevron">▼</span>
+        </button>
+        <ul class="mgp-country-dropdown" style="display: none;">
+            <?php foreach ($mgp_country_config as $code => $info): 
+                // Skip current country
+                if ($code === $expected_country) continue;
+
+                $link = $current_config['alt_domains'][$code] ?? '#';
+                ?>
+                <li>
+                    <a href="<?php echo esc_url($link); ?>" class="mgp-country-option">
+                        <img src="<?php echo esc_url($info['image']); ?>" class="mgp-flag-img" />
+                        <span><?php echo esc_html($info['country_name']); ?></span>
+                    </a>
+                </li>
+            <?php endforeach; ?>
+        </ul>
     </div>
     <?php
     return ob_get_clean();

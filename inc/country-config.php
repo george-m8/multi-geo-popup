@@ -1,6 +1,6 @@
 <?php
 return [
-    'UK' => [
+    'GB' => [
         'country_name' => 'United Kingdom',
         'image'        => '/img/128px/uk_flag.png',
     ],

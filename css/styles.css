@@ -55,6 +55,64 @@
     margin-right: 0.5rem;
     border-radius: 3px;
 }
+
+/* Country Selector Styles */
+.mgp-country-selector {
+    position: relative;
+    display: inline-block;
+}
+
+.mgp-current-country-toggle {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border: 1px solid #ccc;
+    background: #fff;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.mgp-flag-img {
+    width: 20px;
+    height: auto;
+    vertical-align: middle;
+}
+
+.mgp-chevron {
+    margin-left: 8px;
+    font-size: 12px;
+}
+
+.mgp-country-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    margin: 0;
+    padding: 4px 0;
+    background: white;
+    border: 1px solid #ccc;
+    list-style: none;
+    width: 200px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.mgp-country-dropdown li {
+    padding: 4px 12px;
+}
+
+.mgp-country-option {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #333;
+    text-decoration: none;
+}
+
+.mgp-country-option:hover {
+    background-color: #f5f5f5;
+}
   
 /* Responsive styles */
 @media (min-width: 600px) {
@@ -68,3 +126,4 @@
         min-width: 120px;
     }
 }
+
