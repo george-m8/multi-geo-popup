@@ -17,7 +17,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return null;
     }
 
-    /*if (getCookie('mgp_ignore_redirect') === 'true') {
+    if (getCookie('mgp_ignore_redirect') === 'true') {
         dbgLog('User chose to stay previously, skipping geolocation check.');
         return;
     }
@@ -40,7 +40,7 @@ document.addEventListener('DOMContentLoaded', function () {
     if (getCookie(`pum-${popupId}`) === 'true') {
         dbgLog('Popup will not open due to Popup Maker cookie, skipping geolocation check.');
         return;
-    }*/
+    }
 
     // Ajax function to get location
     function fetchLocationAndDecide() {
