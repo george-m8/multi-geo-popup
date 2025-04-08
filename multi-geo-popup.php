@@ -174,23 +174,31 @@ add_shortcode('mgp_popup_content', function($atts) {
 add_shortcode('mgp_country_selector', function($atts) {
     global $mgp_domain_config, $mgp_country_config;
 
+    $atts = shortcode_atts([
+        'direction' => 'down', // or 'up'
+        'align' => 'left',     // or 'right'
+    ], $atts, 'mgp_country_selector');
+
     $current_host = $_SERVER['HTTP_HOST'] ?? 'localhost';
     $current_config = $mgp_domain_config[$current_host] ?? null;
     $expected_country = $current_config['expected_country'] ?? 'XX';
 
+    $direction_class = 'mgp-direction-' . esc_attr($atts['direction']);
+    $align_class = 'mgp-align-' . esc_attr($atts['align']);
+
     ob_start();
     ?>
-    <div class="mgp-country-selector">
+    <div class="mgp-country-selector <?php echo $direction_class . ' ' . $align_class; ?>">
         <button class="mgp-current-country-toggle">
             <img src="<?php echo esc_url($mgp_country_config[$expected_country]['image']); ?>" class="mgp-flag-img" />
             <span><?php echo esc_html($mgp_country_config[$expected_country]['country_name']); ?></span>
-            <span class="mgp-chevron">▼</span>
+            <span class="mgp-chevron">
+                <?php echo $atts['direction'] === 'up' ? '▲' : '▼'; ?>
+            </span>
         </button>
         <ul class="mgp-country-dropdown" style="display: none;">
             <?php foreach ($mgp_country_config as $code => $info): 
-                // Skip current country
                 if ($code === $expected_country) continue;
-
                 $link = $current_config['alt_domains'][$code] ?? '#';
                 ?>
                 <li>
