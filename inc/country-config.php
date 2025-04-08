@@ -13,7 +13,7 @@ return [
         'image'        => '/img/128px/mx_flag.png',
     ],
     'XX' => [
-        'country_name' => 'Unknown',
+        'country_name' => 'Country Not Found',
         'image'        => '/img/128px/generic_flag.png',
     ],
 ];

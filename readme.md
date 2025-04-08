@@ -35,16 +35,36 @@ Multi Geo Popup uses a config file (`domain-config.php`) to define which domain 
 ### 2. Configure Countries
 - In `inc/country-config`, create any entries for countries you would like to include. A small list is provided here already. Add any country codes needed, their country names and any images for country flags.
 
-### 2. Add Popups
+### 3. Add Popups
 - Install and activate Popup Maker (optional) if you want to display popups based on location mismatches.
 - Use the `popup_id` from your domain config in Popup Maker’s settings.
 
-### 3. Check Debug Logs
+### 4. Check Debug Logs
 - Set `define('MGP_DEBUG_MODE', true);` in `multi-geo-popup.php` to log debug messages in the browser console.
 - For PHP-level logs (fallback usage, errors, etc.), enable `WP_DEBUG_LOG` in `wp-config.php`.
 
-### 4. Shortcodes
-- The plugin includes basic shortcodes for displaying user location or alternative links. For more advanced usage, you can create or extend shortcodes to dynamically populate popup content based on the user’s country.
+### 5. Shortcodes
+The plugin provides the following shortcodes for use in your WordPress pages or posts:
+
+#### `[mgp_popup_content]`
+Displays a popup with location-based content. The popup includes a message asking the user if they want to stay on the current site or navigate to a site for their detected country.
+
+**Example Usage:**
+```html
+[mgp_popup_content]
+```
+
+#### `[mgp_country_selector]`
+Renders a dropdown country selector that allows users to manually switch between available country-specific sites. The dropdown can be customized with the following attributes:
+- `direction`: Specifies the dropdown direction (`down` or `up`). Default is `down`.
+- `align`: Specifies the alignment of the dropdown (`left` or `right`). Default is `left`.
+
+**Example Usage:**
+```html
+[mgp_country_selector direction="down" align="right"]
+```
+
+This shortcode dynamically generates a list of countries based on the configuration in `inc/country-config.php` and links to alternative domains defined in `inc/domain-config.php`.
 
 ---
 

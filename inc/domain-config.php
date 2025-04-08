@@ -17,22 +17,12 @@ return [
             'MX' => 'https://www.mysurrogacyjourney.mx',
         ],
     ],
-    'mysite.com.mx' => [
+    'mysurrogacyjourney.mx' => [
         'expected_country' => 'MX',
         'popup_id'        => 4567,
         'alt_domains'     => [
             'GB' => 'https://www.mysurrogacyjourney.com',
             'US' => 'https://us.mysurrogacyjourney.com',
-        ],
-    ],
-    'localhost:8888' => [
-        'expected_country' => 'US',
-        'popup_id'        => 8195,
-        'alt_domains'     => [
-            'GB' => 'https://www.mysurrogacyjourney.com',
-            'MX' => 'https://www.mysurrogacyjourney.mx',
-            'US' => 'https://us.mysurrogacyjourney.com',
-            'XX' => 'https://testsite.com', // Fallback for local testing
         ],
     ],
 ];
