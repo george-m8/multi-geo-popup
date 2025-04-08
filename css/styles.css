@@ -20,6 +20,10 @@
   
 .mgp-user-country {
     font-weight: bold;
+    /*color: #E85480;*/
+}
+
+.mgp-popup-heading-text .mgp-user-country{
     color: #E85480;
 }
   

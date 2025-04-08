@@ -159,11 +159,11 @@ add_shortcode('mgp_popup_content', function($atts) {
     ?>
     <div class="mgp-popup-wrapper">
         <div class="mgp-popup-content">
-            <p>It looks like you're in <span class="mgp-user-country">LOADING COUNTRY</span>.</p>
-            <p>Would you like to go to our <span class="mgp-user-country">LOADING COUNTRY</span> site instead?</p>
+            <p class="mgp-popup-heading-text">It looks like you're in <span class="mgp-user-country">LOADING COUNTRY</span>.</p>
+            <p class="mgp-popup-heading-text">Would you like to go to our <span class="mgp-user-country">LOADING COUNTRY</span> site instead?</p>
             <div class="mgp-buttons">
                 <a class="mgp-button mgp-stay-button popmake-close pum-close" href="#">Stay Here</a>
-                <a class="mgp-button mgp-go-button" href="#"><img src="/img/128px/generic_flag.png" class="mgp-user-country-img">Go to <span class="mgp-user-country"> local site</span></a>
+                <a class="mgp-button mgp-go-button" href="#"><img src="/img/128px/generic_flag.png" class="mgp-user-country-img"><span class="mgp-button-text">Go to <span class="mgp-user-country"> local site</span></span></a>
             </div>
         </div>
     </div>
